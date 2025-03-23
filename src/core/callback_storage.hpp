@@ -9,15 +9,24 @@
 namespace cpp_algosort_benchmark
 {
 
-namespace common
+
+namespace detail
 {
 
 constexpr std::size_t cMaxInPlaceCallbackByteSize = 32*sizeof(char);
 
+template <class T>
+struct is_in_place {
+    static constexpr bool m_value = sizeof(T) <= cMaxInPlaceCallbackByteSize;
+};
+
+}   // ns: detail
+
+
 struct callback_storage {
     union cb_obj {
         void* m_heapPointer;
-        char  m_memoryInPlace[cMaxInPlaceCallbackByteSize];
+        char  m_memoryInPlace[detail::cMaxInPlaceCallbackByteSize];
     } m_data;
 
     void (*m_callback_destructor)(callback_storage&);
@@ -25,20 +34,20 @@ struct callback_storage {
 
     template <typename ... Args>
     void call(Args ... args) {
-        reinterpret_cast<void(*)(callback_storage&, Args ...)>(m_call)(*this, args ...);
+        if (m_call)
+            reinterpret_cast<void(*)(callback_storage&, Args ...)>(m_call)(*this, args ...);
     }
 
-    callback_storage() : m_callback_destructor(nullptr) {}
+    callback_storage() : m_callback_destructor(nullptr), m_call(nullptr)  {}
     ~callback_storage() {
         if (m_callback_destructor)
             m_callback_destructor(*this);
     };
 };
 
-template <typename T>
-struct is_in_place {
-    static constexpr bool m_value = sizeof(T) <= cMaxInPlaceCallbackByteSize;
-};
+
+namespace detail
+{
 
 template <bool>
 struct callback_storage_ops {
@@ -85,11 +94,14 @@ struct callback_storage_ops<true> {
 };
 
 
+}   // ns: detail
 
-
+template <class T, typename ... Args>
+void init_callback_storage(callback_storage& _cb_storage, T&& _cb) {
+    detail::callback_storage_ops<detail::is_in_place<T>::m_value>::template pack_cb<T, Args...>(_cb_storage, std::forward<T>(_cb));
 }
 
-}
+}   // ns: cpp_algosort_benchmark
 
 
 

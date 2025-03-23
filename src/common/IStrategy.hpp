@@ -19,10 +19,8 @@ public:
     ~IStrategy() = default;
 
     template <class Type>
-    error_t operator()(typename std::vector<Type>::iterator _begin, typename std::vector<Type>::iterator _end, int(*_comparator)(Type&, Type&)) {
-        reinterpret_cast<T*>(this)->Sort(_begin, _end, _comparator);
-
-        return OPERATION_SUCCESS;
+    void operator()(typename std::vector<Type>::iterator _begin, typename std::vector<Type>::iterator _end, int(*_comparator)(Type&, Type&)) {
+        static_cast<T*>(this)->Sort(_begin, _end, _comparator);
     }
 
 };

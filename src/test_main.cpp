@@ -12,7 +12,7 @@ int main() {
 
     std::vector<int> i;
 
-    context.SetupAlgorithm<cpp_algosort_benchmark::CountingSort, int>(reinterpret_cast<cpp_algosort_benchmark::common::IStrategy<cpp_algosort_benchmark::CountingSort>*>(&cs));
+    context.SetupAlgorithm<cpp_algosort_benchmark::CountingSort, int>(static_cast<cpp_algosort_benchmark::common::IStrategy<cpp_algosort_benchmark::CountingSort>*>(&cs));
     context(i.begin(), i.end(), cmp);
 
     return 0;

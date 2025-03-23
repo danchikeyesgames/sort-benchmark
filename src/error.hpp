@@ -4,15 +4,10 @@
 namespace cpp_algosort_benchmark
 {
 
-namespace common
-{
-
-typedef int error_t;
-
-#define OPERATION_SUCCESS 0
-#define OPERATION_FAILURE 1
-
-}
+enum class error_t {
+    OPERATION_SUCCESS = 0,
+    OPERATION_FAILURE
+};
 
 }
 
