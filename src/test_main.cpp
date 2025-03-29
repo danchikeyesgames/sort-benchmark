@@ -2,17 +2,20 @@
 
 #include "SortAlgoContext.hpp"
 
-int cmp(int& lv, int& rv) {
+int cmp(std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) {
     return 0;
 }
 
 int main() {
-    cpp_algosort_benchmark::SortAlgoContext context;
-    cpp_algosort_benchmark::CountingSort cs;
-
     std::vector<int> i;
 
-    context.SetupAlgorithm<cpp_algosort_benchmark::CountingSort, int>(static_cast<cpp_algosort_benchmark::common::IStrategy<cpp_algosort_benchmark::CountingSort>*>(&cs));
+    cpp_algosort_benchmark::SortAlgoContext<std::vector<int>::iterator> context;
+    cpp_algosort_benchmark::CountingSort cs;
+
+    i.push_back(200);
+    i.push_back(300);
+
+    context.SetupAlgorithm(&cs);
     context(i.begin(), i.end(), cmp);
 
     return 0;
