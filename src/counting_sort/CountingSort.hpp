@@ -11,9 +11,10 @@ namespace cpp_algosort_benchmark
 
 class CountingSort : public common::IStrategy<CountingSort> {
 public:
-    template <typename Type>
-    void Sort(typename std::vector<Type>::iterator _begin, typename std::vector<Type>::iterator _end, int(*_comparator)(Type&, Type&)) {
+    template <typename RandomIter>
+    void Sort(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
         std::cout << "Hello, World\n";
+        std::cout << *_begin << " " << *(_begin+1) << "\n";
     }
 };
 

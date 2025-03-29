@@ -18,8 +18,8 @@ public:
     IStrategy() {}
     ~IStrategy() = default;
 
-    template <class Type>
-    void operator()(typename std::vector<Type>::iterator _begin, typename std::vector<Type>::iterator _end, int(*_comparator)(Type&, Type&)) {
+    template <class RandomIter>
+    void operator()(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
         static_cast<T*>(this)->Sort(_begin, _end, _comparator);
     }
 
