@@ -3,29 +3,23 @@
 
 #include "callback_storage.hpp"
 
-#include "error.hpp"
-
-#include "common/IStrategy.hpp"
+#include "i_strategy.hpp"
 
 namespace cpp_algosort_benchmark
 {
 
-class SortAlgoContextBase {
+class sort_algo_context_base {
     callback_storage m_cb_storage;
 
 protected:
     template <class IStrategy, class RandomIter>
-    error_t InitCallbackStorage(IStrategy&& _strategyImpl) {
+    void init(IStrategy&& _strategyImpl) {
         init_callback_storage<IStrategy, RandomIter, RandomIter, int(*)(RandomIter&, RandomIter&)>(m_cb_storage, std::forward<IStrategy>(_strategyImpl));
-
-        return error_t::OPERATION_SUCCESS;
     }
 
     template <class RandomIter>
-    error_t CallSortAlgo(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
+    void call_algorithm(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
         m_cb_storage.call(_begin, _end, _comparator);
-
-        return error_t::OPERATION_SUCCESS;
     }
 };
 

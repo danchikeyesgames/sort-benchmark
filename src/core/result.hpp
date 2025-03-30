@@ -1,10 +1,10 @@
-#ifndef __ERRROR_HPP__
-#define __ERRROR_HPP__
+#ifndef __RESULT_HPP__
+#define __RESULT_HPP__
 
 namespace cpp_algosort_benchmark
 {
 
-enum class error_t {
+enum class result_t {
     OPERATION_SUCCESS = 0,
     OPERATION_FAILURE
 };
@@ -12,4 +12,4 @@ enum class error_t {
 }
 
 
-#endif  // __ERRROR_HPP__
+#endif  // __RESULT_HPP__

@@ -1,22 +1,15 @@
 #ifndef __ISTRATEGY_HPP__
 #define __ISTRATEGY_HPP__
 
-#include "error.hpp"
-
-#include <vector>
-
 namespace cpp_algosort_benchmark
 {
 
-namespace common
-{
-
 template <class T>
-class IStrategy {
+class i_strategy {
 
 public:
-    IStrategy() {}
-    ~IStrategy() = default;
+    i_strategy() {}
+    ~i_strategy() = default;
 
     template <class RandomIter>
     void operator()(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
@@ -24,8 +17,6 @@ public:
     }
 
 };
-
-}
 
 }
 

@@ -1,7 +1,7 @@
 #ifndef __COUNTING_SORT_HPP__
 #define __COUNTING_SORT_HPP__
 
-#include "common/IStrategy.hpp"
+#include "core/i_strategy.hpp"
 
 #include <vector>
 #include <iostream>
@@ -9,7 +9,7 @@
 namespace cpp_algosort_benchmark
 {
 
-class CountingSort : public common::IStrategy<CountingSort> {
+class counting_sort : public i_strategy<counting_sort> {
 public:
     template <typename RandomIter>
     void Sort(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
