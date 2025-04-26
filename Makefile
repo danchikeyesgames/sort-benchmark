@@ -10,3 +10,4 @@ build: exec.out
 
 clean:
 	rm exec.out
+
