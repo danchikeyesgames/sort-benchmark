@@ -3,7 +3,6 @@
 
 #include "core/i_strategy.hpp"
 
-#include <vector>
 #include <iostream>
 
 namespace cpp_algosort_benchmark
