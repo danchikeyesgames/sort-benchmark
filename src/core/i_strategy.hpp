@@ -1,7 +1,7 @@
 #ifndef __ISTRATEGY_HPP__
 #define __ISTRATEGY_HPP__
 
-namespace cpp_algosort_benchmark
+namespace cppsort
 {
 
 template <class T>
@@ -15,9 +15,8 @@ public:
     void operator()(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
         static_cast<T*>(this)->Sort(_begin, _end, _comparator);
     }
-
 };
 
-}
+}   // ns: cppsort
 
 #endif  // __ISTRATEGY_HPP__
