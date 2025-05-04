@@ -3,17 +3,16 @@
 
 #include "core/i_strategy.hpp"
 
-#include <iostream>
+#include "core/debug.hpp"
 
-namespace cpp_algosort_benchmark
+namespace cppsort
 {
 
 class counting_sort : public i_strategy<counting_sort> {
 public:
     template <typename RandomIter>
     void Sort(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
-        std::cout << "Hello, World\n";
-        std::cout << *_begin << " " << *(_begin+1) << "\n";
+        debug::call("call counting_sort");
     }
 };
 

@@ -4,11 +4,8 @@
 #include <type_traits>
 #include <utility>
 
-#include <cstdint>
-
-namespace cpp_algosort_benchmark
+namespace cppsort
 {
-
 
 namespace detail
 {
@@ -17,7 +14,7 @@ constexpr std::size_t cMaxInPlaceCallbackByteSize = 32*sizeof(char);
 
 template <class T>
 struct is_in_place {
-    static constexpr bool m_value = sizeof(T) <= cMaxInPlaceCallbackByteSize;
+    static constexpr bool value = sizeof(T) <= cMaxInPlaceCallbackByteSize;
 };
 
 }   // ns: detail
@@ -98,10 +95,10 @@ struct callback_storage_ops<true> {
 
 template <class T, typename ... Args>
 void init_callback_storage(callback_storage& _cb_storage, T&& _cb) {
-    detail::callback_storage_ops<detail::is_in_place<T>::m_value>::template pack_cb<T, Args...>(_cb_storage, std::forward<T>(_cb));
+    detail::callback_storage_ops<detail::is_in_place<T>::value>::template pack_cb<T, Args...>(_cb_storage, std::forward<T>(_cb));
 }
 
-}   // ns: cpp_algosort_benchmark
+}   // ns: cppsort
 
 
 
