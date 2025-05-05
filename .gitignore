@@ -1,7 +1,10 @@
+# vscode settings
 *.vscode
 
+# bin
 *.o
 *.out
+*.elf
 
 # nvim temp files (clangd)
 .cache
