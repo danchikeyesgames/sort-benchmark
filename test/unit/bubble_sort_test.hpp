@@ -4,7 +4,7 @@
 #include "algorithm_context.hpp"
 #include "sort/bubble_sort.hpp"
 
-#include "utils/SortTestAbstract.hpp"
+#include "utils/sort_test.hpp"
 #include "utils/sort_trait.hpp"
 
 #include <vector>
@@ -16,8 +16,9 @@ namespace cppsort
 namespace test
 {
 
-class BubbleSortTest1 : public SortTestAbstract<BubbleSortTest1> {
-    std::vector<int> ds; 
+
+SORT_TEST(bubble_sort, test_1) {
+    std::vector<int> ds;
     algorithm_context<std::vector<int>::iterator> ac;
     bubble_sort bs;
 
@@ -40,14 +41,11 @@ public:
     }
 
     int Check() {
-        for (auto value : ds) {
-            std::cout << " " << value;
-        }
-        std::cout << "\n";
-
         return util::trait::is_sorted(ds.begin(), ds.end());
     }
 };
+
+
 
 }   // ns: test
 

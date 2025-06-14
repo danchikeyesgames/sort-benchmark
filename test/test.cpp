@@ -1,15 +1,25 @@
-#include "BubleSortTest.hpp"
+#include "unit/bubble_sort_test.hpp"
 
 #include <iostream>
 
 
+namespace cppsort
+{
+
+namespace test
+{
+
+void init_test() {
+    SORT_REGISTER_TEST(bubble_sort, test_1);
+
+}
+
+}
+
+}
 
 int main() {
-    cppsort::test::BubbleSortTest1 bst1;
+    cppsort::test::init_test();
 
-    std::cout << "Start BubbleSortTest1\n";
-    bst1.RunTest();
-    std::cout << "BubbleSortTest1 passed successfully\n";
-
-    return 0;
+    cppsort::test::sort_test_db::run();
 }
