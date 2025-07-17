@@ -1,6 +1,8 @@
 #ifndef __ISTRATEGY_HPP__
 #define __ISTRATEGY_HPP__
 
+#include "virtual_iterator.hpp"
+
 namespace cppsort
 {
 
@@ -11,8 +13,7 @@ public:
     i_strategy() {}
     ~i_strategy() = default;
 
-    template <class RandomIter>
-    void operator()(RandomIter _begin, RandomIter _end, int(*_comparator)(RandomIter&, RandomIter&)) {
+    void operator()(virtual_iterator _begin, virtual_iterator _end, int(*_comparator)(virtual_iterator&, virtual_iterator&)) {
         static_cast<T*>(this)->Sort(_begin, _end, _comparator);
     }
 };

@@ -12,8 +12,7 @@ namespace cppsort
 
 class bubble_sort : public i_strategy<bubble_sort> {
 public:
-    template <typename RandomIter>
-    void Sort(RandomIter _begin, RandomIter _end, comparator_t<RandomIter> _comparator) {
+    void Sort(virtual_iterator _begin, virtual_iterator _end, comparator_t<virtual_iterator> _comparator) {
         debug::call("Bubble sort start");
 
         for (auto i = _begin; i != _end; ++i) {
@@ -23,13 +22,11 @@ public:
                 if (value == 0) continue;
                 else if (value < 0) continue;
                 else if (value > 0) {
-                    auto tmp = *i;
-                    *i = *j;
-                    *j = tmp;
+                    i.swap(j);
                 }
             }
         }
- 
+
         debug::call("Bubble sort has finished successfull");
     }
 };

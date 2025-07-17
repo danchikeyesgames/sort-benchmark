@@ -19,7 +19,7 @@ namespace test
 
 SORT_TEST(bubble_sort, test_1) {
     std::vector<int> ds;
-    algorithm_context<std::vector<int>::iterator> ac;
+    algorithm_context ac;
     bubble_sort bs;
 
 public:
@@ -37,7 +37,7 @@ public:
     }
 
     void Run() {
-        ac(ds.begin(), ds.end(), [](std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) -> int { return *lv > *rv; });
+        ac.sort<std::vector<int>::iterator>(ds.begin(), ds.end(), [](std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) -> int { return *lv > *rv; });
     }
 
     int Check() {
@@ -47,7 +47,7 @@ public:
 
 SORT_TEST(bubble_sort, test_2) {
     std::vector<int> ds;
-    algorithm_context<std::vector<int>::iterator> ac;
+    algorithm_context ac;
     bubble_sort bs;
 
 public:
@@ -75,7 +75,7 @@ public:
     }
 
     void Run() {
-        ac(ds.begin(), ds.end(), [](std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) -> int { return *lv > *rv; });
+        ac.sort<std::vector<int>::iterator>(ds.begin(), ds.end(), [](std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) -> int { return *lv > *rv; });
     }
 
     int Check() {
@@ -85,7 +85,7 @@ public:
 
 SORT_TEST(bubble_sort, test_3) {
     std::vector<int> ds;
-    algorithm_context<std::vector<int>::iterator> ac;
+    algorithm_context ac;
     bubble_sort bs;
 
 public:
@@ -100,7 +100,7 @@ public:
     }
 
     void Run() {
-        ac(ds.begin(), ds.end(), [](std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) -> int { return *lv > *rv; });
+        ac.sort<std::vector<int>::iterator>(ds.begin(), ds.end(), [](std::vector<int>::iterator& lv, std::vector<int>::iterator& rv) -> int { return *lv > *rv; });
     }
 
     int Check() {

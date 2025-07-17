@@ -3,7 +3,7 @@
 # Makefile compile settings
 
 CXX="g++"
-CXX_FLAGS="-std=c++11 -c"
+CXX_FLAGS="-std=c++17 -c"
 CXX_FILES="test.cpp"
 CXX_LDFLAGS="-o"
 CXX_INCLUDE="-I../src/ -I."
